@@ -20,16 +20,16 @@ module.exports = {
         });
       } else {
         return res.send({
-          starus: true,
+          status: true,
           message: "Product created Successfully.",
-          result: { saveData },
+          result: saveData,
         });
       }
     } catch (error) {
       console.log(error);
       return res.send({
         status: false,
-        message: "Internal Server Error.",
+        message: error,
         result: [],
       });
     }
