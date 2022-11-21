@@ -21,8 +21,6 @@ module.exports = {
           result: [],
         });
       } else {
-        let user_name = req.body.userName;
-        let mobile = req.body.mobile;
         let password = req.body.password;
         req.body.password = bcrypt.hashSync(password);
         let userSave = await new userModel(req.body).save();
@@ -37,10 +35,18 @@ module.exports = {
             { email: req.body.email, id: userModel._id },
             SECRET_KEY
           );
+          // const user = {}
           return res.send({
             code: 200,
             message: "SignUp Done Successfully !!!",
-            result: userSave,
+            result: {
+              email: userSave.email,
+              id: userSave._id,
+              username: userSave.userName,
+              mobile: userSave.mobile,
+              status: userSave.status,
+              userType: userSave.userType,
+            },
             token: token,
           });
         }
@@ -90,7 +96,6 @@ module.exports = {
             });
           } else {
             /* API for User Authentication*/
-            console.log(userResult);
             let data = {
               userId: userResult._id,
               user: userResult.userName,
@@ -103,7 +108,7 @@ module.exports = {
             return res.send({
               code: 200,
               message: "Login Done Successfully !!!",
-              result: [{ token: token }, { user: data }],
+              result: { token: token, user: data },
             });
           }
         }
