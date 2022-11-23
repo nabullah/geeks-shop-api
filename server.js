@@ -2,10 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 require("./database/db");
-const multer = require("multer");
-const upload = multer();
 const PORT = 8500;
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // app.use();
@@ -22,4 +19,4 @@ app.use("/user", userRouter);
 
 // Products Router
 const productsRouter = require("./router/products/products");
-app.use("/products", productsRouter);
+app.use("/products",  productsRouter);
