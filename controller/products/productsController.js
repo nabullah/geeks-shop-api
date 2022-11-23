@@ -1,10 +1,11 @@
 const productModal = require("../../model/products/products");
+const auth = require("../../middleware/auth")
+  
 
 module.exports = {
   createProduct: async (req, res) => {
     try {
-      //   let data = req.body;
-      //   let saveData = await new productModal(req.body).save();
+      console.log("========================================================================r",req.body);
       let saveData = await new productModal({
         title: req.body.title,
         price: req.body.price,

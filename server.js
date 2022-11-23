@@ -2,10 +2,13 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 require("./database/db");
+const multer = require("multer");
+const upload = multer();
+const PORT = 8500;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-const PORT = 8500;
+// app.use();
 app.use("*", cors());
 
 /* Server Listen */
