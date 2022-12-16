@@ -1,3 +1,3 @@
 # geeks-shop-api
 
-#Credit - MD Taufeeque Alam
+Contributed - MD Taufeeque Alam
